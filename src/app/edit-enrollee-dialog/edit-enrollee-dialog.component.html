@@ -1,0 +1,47 @@
+<h3 mat-dialog-title class="dialog-heading" id="dialog-title">
+    Edit An Enrollee
+</h3>
+
+<mat-dialog-content class="dialog-content">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-4 text-right align-self-center">
+                <mat-label id="name-label" for="name-input">Name:</mat-label>
+            </div>
+            <div class="col-8 text-left">
+                <mat-form-field>
+                    <input matInput id="name-input" placeholder="Enter name" aria-labelledby="name-label" type="text" formControlName="name" />
+                </mat-form-field>
+                <div *ngIf="
+            formGroup.controls.name.errors &&
+            formGroup.controls.name.errors.required
+          " class="error-text">
+                    <span>This is a required field.</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-right">
+                <label id="status-label" for="status-radio">Status:</label>
+            </div>
+            <div class="col-8 text-left">
+                <mat-radio-group id="status-radio" aria-label="status-label" formControlName="status">
+                    <mat-radio-button value="active">Active</mat-radio-button>
+                    <mat-radio-button value="inactive" class="radio-spacing">Inactive</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-7">
+                <button mat-flat-button type="button" (click)="onCancelClick()">
+          Cancel
+        </button>
+            </div>
+            <div class="col-2">
+                <button mat-flat-button color="primary" type="submit" [disabled]="!formGroup.dirty || formGroup.invalid || disableSubmit">
+          Submit
+        </button>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>

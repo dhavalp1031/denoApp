@@ -1,0 +1,43 @@
+.title {
+    font-size: 1.6em;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+.action-width {
+    max-width: 100px;
+}
+
+.id-width {
+    max-width: 400px;
+}
+
+.name-width {
+    max-width: 250px;
+}
+
+.dob-width {
+    max-width: 200px;
+}
+
+.status-width {
+    max-width: 150px;
+}
+
+.edit-button {
+    color: #3f51b5;
+    text-decoration: none;
+    padding: 0;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    &:focus {
+        outline: 0;
+    }
+    &:hover {
+        border-bottom: 2px solid #3f51b5;
+    }
+}

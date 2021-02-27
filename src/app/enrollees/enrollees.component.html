@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="title">Enrolles</h3>
+            <div class="card">
+                <mat-table id="enrollees-table" [dataSource]="enrollees$ | async">
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef class="action-width">Action</mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index" class="action-width">
+                            <span><button
+                  [id]="'edit-' + i"
+                  class="edit-button"
+                  (click)="handleEditClick(element)"
+                >
+                  EDIT
+                </button></span
+              >
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef class="id-width"
+              >ID</mat-header-cell
+            >
+            <mat-cell *matCellDef="let element" class="id-width">
+              {{ element.id }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef class="name-width"
+              >Name</mat-header-cell
+            >
+
+            <mat-cell *matCellDef="let element" class="name-width">
+              {{ element.name }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="dateOfBirth">
+            <mat-header-cell *matHeaderCellDef class="dob-width"
+              >Date of Birth</mat-header-cell
+            >
+            <mat-cell *matCellDef="let element" class="dob-width">
+              <span *ngIf="!!element.dateOfBirth">{{
+                element.dateOfBirth | date: "MM/dd/yyyy"
+              }}</span>
+                            <span *ngIf="!element.dateOfBirth">Not Available</span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef class="status-width">Status</mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="status-width">
+                            <span>{{ element.active === true ? "Active" : "Inactive" }}</span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+                </mat-table>
+            </div>
+        </div>
+    </div>
+</div>
